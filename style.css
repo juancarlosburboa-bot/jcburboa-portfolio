@@ -5,8 +5,8 @@
     padding: 0; 
 }
 :root {
-    --primary-color: #FFAE42; /* Your chosen solid orange */
-    --text-color: #FFFFFF;    /* White text for contrast */
+    --primary-color: #FFFFFF; /* Your chosen solid orange */
+    --text-color: #FFAE42;    /* White text for contrast */
     --font-family-mono: 'Roboto Mono', monospace; /* Retro-minimalist font */
 }
 
