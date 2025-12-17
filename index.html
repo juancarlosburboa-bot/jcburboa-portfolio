@@ -1,149 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JC Burboa | [Your Tagline Here]</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section id="bookshelf" class="section">
-        <div class="container">
-            <h2>DIGITAL BOOKSHELF</h2>
-            <div class="bookshelf-grid-container">
-                <div class="bookshelf-grid">
+    <div class="content-container">
+        
+        <header>
+            <h1 class="name-title">JC BURBOA</h1>
+            <p class="tagline">WEB3 OPTIMIST AND COMMUNITY BUILDER.</p>
+        </header>
 
-                    <a href="#" class="book-item"
-                       data-title="The Coder's Almanac"
-                       data-review="This is the short summary of my review for The Coder's Almanac. It was a fascinating dive into structured programming and clean code. The full review discusses its historical context and modern relevance.">
-                        <img src="[URL_FOR_BOOK_1_COVER]" alt="The Coder's Almanac Cover">
-                    </a>
-                    
-                    <a href="#" class="book-item"
-                       data-title="Data Structures, Simplified"
-                       data-review="An excellent, quick read on fundamental data structures. The author uses simple analogies which made complex topics easy to grasp. Recommended for beginners.">
-                        <img src="[URL_FOR_BOOK_2_COVER]" alt="Data Structures, Simplified Cover">
-                    </a>
+        <main>
+            <section class="section">
+                <h2>I'm a creative professional focused on [Your Primary Industry/Skill].</h2>
+                <p>
+                    I currently work as a [Your Job Title] at [Your Company/Project Name], focusing on [Key Focus Area]. I thrive on fostering strong communities, building effective decentralized systems, and pioneering better ways people interact online. My career has involved [Mention 1-2 Big Achievements or Past Roles].
+                </p>
+                <p>
+                    I am passionate about the future of the web and believe that [Your Core Philosophy, e.g., 'trust and transparency are the foundations of digital community'].
+                </p>
+            </section>
 
-                    <a href="#" class="book-item"
-                       data-title="The Design of Everyday Things"
-                       data-review="A classic in UX/UI design. It completely changed the way I look at interfaces. My full review goes into the concepts of affordance and signifiers.">
-                        <img src="[URL_FOR_BOOK_3_COVER]" alt="The Design of Everyday Things Cover">
-                    </a>
-                    
-                    <a href="#" class="book-item" data-title="Empty Slot" data-review="No review written yet.">
-                        <img src="https://via.placeholder.com/150x225/333333/FFFFFF?text=SLOT" alt="Empty Book Slot">
-                    </a>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <footer id="contact">
+            <section class="section">
+                <h2>Projects & Writings</h2>
+                <ul class="link-list">
+                    <li><a href="[LINK TO YOUR FIRST PROJECT]">PROJECT TITLE ONE</a> &ndash; [One sentence description of the project.]</li>
+                    <li><a href="[LINK TO YOUR SECOND PROJECT]">PROJECT TITLE TWO</a> &ndash; [Briefly describe the outcome or technology.]</li>
+                    <li><a href="[LINK TO YOUR ARTICLE/BLOG]">ARTICLE/BLOG POST TITLE</a> &ndash; [Date or quick summary.]</li>
+                </ul>
+                <p class="more-link">
+                    <a href="[LINK TO YOUR FULL PORTFOLIO PAGE]">VIEW ALL WORK →</a>
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <nav>
+                <a href="mailto:juan.carlos.burboa@gmail.com">EMAIL</a>
+                <span class="separator">/</span>
+                <a href="[YOUR LINKEDIN URL]">LINKEDIN</a>
+                <span class="separator">/</span>
+                <a href="[YOUR TWITTER/X URL]">TWITTER</a>
+            </nav>
+            <p class="copyright">&copy; 2025 JC Burboa.</p>
         </footer>
-    
-    <div id="reviewModal" class="review-modal">
-        <div class="modal-header">
-            <h3 id="modalTitle"></h3>
-            <div class="modal-actions">
-                <button id="expandBtn">EXPAND</button>
-                <button id="closeBtn">CLOSE</button>
-            </div>
-        </div>
-        <div class="review-content">
-            <p id="modalReviewContent"></p>
-        </div>
+
     </div>
-
-    <script>
-        const books = document.querySelectorAll('.book-item');
-        const modal = document.getElementById('reviewModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalContent = document.getElementById('modalReviewContent');
-        const closeBtn = document.getElementById('closeBtn');
-        const expandBtn = document.getElementById('expandBtn');
-        let currentBookElement = null;
-
-        // Function to close the modal
-        function closeModal() {
-            modal.style.display = 'none';
-            modal.classList.remove('expanded');
-            document.body.style.overflow = ''; // Restore scrolling
-            currentBookElement = null;
-        }
-
-        // Add click event listeners to all book covers
-        books.forEach(book => {
-            book.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent the link from navigating
-
-                const title = this.getAttribute('data-title');
-                const review = this.getAttribute('data-review');
-                
-                // Hide any currently open modal
-                if (currentBookElement !== this && currentBookElement !== null) {
-                     closeModal();
-                }
-
-                // If the modal is already showing for this book, close it.
-                if (currentBookElement === this) {
-                    closeModal();
-                    return;
-                }
-                
-                currentBookElement = this;
-
-                // Position and populate the small modal
-                modalTitle.textContent = title;
-                modalContent.innerHTML = review; // Use innerHTML for future formatting
-                
-                // Calculate position relative to the clicked book cover
-                const rect = this.getBoundingClientRect();
-                
-                // Reset to small view before repositioning
-                modal.classList.remove('expanded');
-                modal.style.display = 'block';
-
-                // Set the modal position to appear next to the book
-                // The CSS is written for relative positioning, but we need to ensure it's
-                // positioned correctly in relation to the main grid for the initial display.
-                // We will use a more robust positioning strategy for the small window next to the book cover:
-                modal.style.position = 'absolute';
-                modal.style.top = `${rect.top + window.scrollY + (rect.height / 2)}px`;
-                modal.style.left = `${rect.right + 15}px`;
-                modal.style.transform = 'translateY(-50%)';
-
-                // Check if the modal goes off the right edge and adjust if necessary
-                if (window.innerWidth < (rect.right + modal.offsetWidth + 30)) {
-                    // Position to the left of the cover if it goes off-screen
-                    modal.style.left = `${rect.left - modal.offsetWidth - 15}px`;
-                }
-
-                
-            });
-        });
-
-        // Event listener for the CLOSE button
-        closeBtn.addEventListener('click', closeModal);
-        
-        // Event listener for the EXPAND button
-        expandBtn.addEventListener('click', function() {
-            modal.classList.toggle('expanded');
-            if (modal.classList.contains('expanded')) {
-                this.textContent = 'COLLAPSE';
-                document.body.style.overflow = 'hidden'; // Disable background scrolling
-            } else {
-                this.textContent = 'EXPAND';
-                document.body.style.overflow = ''; // Enable background scrolling
-            }
-        });
-        
-        // Allow clicking outside the modal to close it (if it's not expanded)
-        document.addEventListener('click', function(e) {
-            // Check if the click target is outside the modal AND not the book cover itself
-            if (!modal.contains(e.target) && !e.target.closest('.book-item') && modal.style.display === 'block' && !modal.classList.contains('expanded')) {
-                closeModal();
-            }
-        });
-        
-    </script>
 </body>
 </html>

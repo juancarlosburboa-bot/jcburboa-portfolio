@@ -1,106 +1,138 @@
-/* ... (Existing Global and Hero styles remain the same) ... */
-
-/* DIGITAL BOOKSHELF STYLES */
-.bookshelf-grid-container {
-    /* New container to center the grid on the page */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+/* RESET & BASE */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
 }
-.bookshelf-grid {
-    /* Define the 5-column grid */
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columns of equal width */
-    gap: 15px; /* Reduced gap for a tighter grid */
-    max-width: 900px; /* Limit the width of the grid */
-    margin: 0 auto;
-}
-.book-item {
-    display: block;
-    cursor: pointer; /* Indicates the cover is clickable */
-    width: 100%; /* Take up the full width of the grid cell */
-    position: relative;
-    /* Removed fixed height/width; using aspect ratio for size */
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5); /* Smaller shadow for smaller covers */
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.book-item:hover {
-    transform: translateY(-3px); /* Smaller lift on hover */
-    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.7);
-}
-.book-item img {
-    width: 100%;
-    /* Maintain the 3:2 book aspect ratio */
-    aspect-ratio: 150 / 225; 
-    display: block;
-    object-fit: cover;
+:root {
+    --text-color: #333;
+    --link-color: #000;
+    --background-color: #fff;
+    --content-width: 600px; /* Key to the minimalist centered look */
 }
 
-/* ---------------------------------------------------------------- */
-/* NEW: REVIEW POP-UP (MODAL) STYLES */
-/* ---------------------------------------------------------------- */
-
-.review-modal {
-    display: none; /* Hidden by default */
-    position: absolute;
-    /* Position the small modal next to the clicked book */
-    top: 50%;
-    left: calc(100% + 15px); /* Position right of the book cover with a gap */
-    transform: translateY(-50%); /* Center vertically relative to its parent */
-    z-index: 10;
-    width: 300px;
-    max-height: 400px;
-    background-color: var(--text-color); /* White background for the modal */
-    color: #000000; /* Black text inside the modal */
-    border: 3px solid #000000; /* Retro border */
-    padding: 15px;
-    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.9);
-    overflow-y: auto;
-}
-.review-modal.expanded {
-    /* Full-screen expanded state */
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: none;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-}
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    border-bottom: 1px dashed #000000;
-    padding-bottom: 5px;
-}
-.modal-header h3 {
-    color: #000000;
-    text-transform: uppercase;
-    font-size: 1.1em;
-}
-.modal-actions {
-    display: flex;
-    gap: 10px;
-}
-.modal-actions button {
-    background: none;
-    border: 1px solid #000000;
-    padding: 3px 8px;
-    cursor: pointer;
-    font-family: var(--font-family-mono);
-    text-transform: uppercase;
-    font-size: 0.8em;
-}
-.modal-actions button:hover {
-    background-color: #000000;
+body {
+    font-family: 'Merriweather', serif; /* Serif font for readability */
+    line-height: 1.65;
+    background-color: var(--background-color);
     color: var(--text-color);
+    /* Ensure the body is full height to center content if needed */
+    min-height: 100vh;
+    padding: 40px 20px; /* Padding for mobile view and desktop edge spacing */
+    display: flex; /* Helps center the entire container */
+    justify-content: center;
 }
-.review-content p {
+
+/* CONTENT CONTAINER - The core layout element */
+.content-container {
+    width: 100%;
+    max-width: var(--content-width); 
+}
+
+/* TYPOGRAPHY & HEADINGS */
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.name-title {
+    letter-spacing: 0.15em; /* Subtle spacing to mimic the site */
+    text-transform: uppercase;
+}
+.tagline {
+    font-size: 1rem;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 40px;
+}
+h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* SECTIONS & PARAGRAPHS */
+.section {
+    margin-bottom: 60px;
+}
+p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* LINKS */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Subtle underline */
+    transition: border-color 0.2s, color 0.2s;
+}
+a:hover {
+    color: #000;
+    border-bottom-color: #000; /* Darker underline on hover */
+}
+
+/* LISTS (Projects/Writings) */
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+.link-list li {
     margin-bottom: 15px;
-    font-size: 0.9em;
-    color: #000000;
+    font-size: 0.95rem;
 }
-/* ... (Existing Footer styles remain the same) ... */
+.link-list a {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+.link-list a:hover {
+    color: #333;
+    border-bottom-color: #333;
+}
+.more-link a {
+    font-style: italic;
+}
+
+/* FOOTER */
+footer {
+    padding-top: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+footer nav {
+    margin-bottom: 15px;
+}
+footer a {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9em;
+    border-bottom: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+.separator {
+    margin: 0 8px;
+    color: #999;
+}
+.copyright {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* MEDIA QUERY for small screens */
+@media (max-width: 650px) {
+    body {
+        padding: 20px 15px;
+    }
+    .name-title {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.15rem;
+    }
+}
