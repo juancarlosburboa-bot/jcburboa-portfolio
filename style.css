@@ -1,0 +1,59 @@
+/* RESET & BASE */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; line-height: 1.6; background-color: #f4f4f4; color: #333; }
+.container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 20px 0; }
+
+/* HERO SECTION */
+.hero { 
+    background-color: #2196F3; /* A professional blue */
+    color: white; 
+    padding: 100px 0; 
+    text-align: center; 
+    min-height: 100vh; /* Full screen on load */
+    display: flex;
+    align-items: center;
+}
+.hero h1 { font-size: 3em; margin-bottom: 10px; }
+.subtitle { font-size: 1.5em; opacity: 0.9; }
+
+/* BUTTONS */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.primary { background-color: white; color: #2196F3; border: 2px solid white; }
+.primary:hover { background-color: #ddd; }
+.secondary { background-color: transparent; color: #2196F3; border: 2px solid #2196F3; margin-right: 10px; }
+.secondary:hover { background-color: #2196F3; color: white; }
+
+/* GENERAL SECTIONS */
+.section { padding: 80px 0; }
+#about { background-color: white; }
+h2 { text-align: center; margin-bottom: 40px; font-size: 2em; }
+
+/* SKILLS LIST & PROJECTS GRID */
+.skills-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.skills-list li { background-color: #eee; padding: 8px 15px; margin: 5px; border-radius: 5px; }
+
+.projects-grid .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.project-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* FOOTER/CONTACT */
+#contact { background-color: #333; color: white; text-align: center; padding: 40px 0; }
+.contact-links a { color: #2196F3; text-decoration: none; margin: 0 10px; }
+.contact-links a:hover { text-decoration: underline; }
+
+/* Add Media Queries for full responsiveness! */
